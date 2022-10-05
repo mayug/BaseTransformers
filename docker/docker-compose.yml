@@ -1,0 +1,30 @@
+# version: '2.3'
+
+# services:
+
+#   FEAT:
+#     image: feat
+#     container_name: FEAT
+#     working_dir: /FEAT
+#     build:
+#       context: ../
+#       dockerfile: docker/Dockerfile
+#     ports:
+#       - "8888:8888" # for jupyter notebook
+#     volumes:
+#       - ../:/FEAT
+#       - ../../notebooks/:/notebooks
+#     runtime: nvidia
+#     shm_size: '8gb'
+#     command: bash -c "tail /dev/null -f"
+
+# #   tensorboard:
+# #     image: tensorflow/tensorflow:1.14.0
+# #     container_name: tensorboard
+# #     working_dir: /logs
+# #     ports:
+# #      - "6000:6006"
+# #     volumes:
+# #       - ../logs:/logs
+# #     command: tensorboard --logdir /logs/results_segmentation
+  

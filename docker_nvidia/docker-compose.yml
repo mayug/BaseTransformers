@@ -1,0 +1,23 @@
+version: '2.3'
+
+services:
+
+  FEAT_n:
+    image: feat_n
+    container_name: FEAT_n
+    working_dir: /FEAT
+    build:
+      context: ../
+      dockerfile: docker_nvidia/Dockerfile
+    ports:
+      - "8888:8888" # for jupyter notebook
+      - "8889:8889" # for http server
+      - "8887:8887" # for http server
+      - "5555:5555"
+    volumes:
+      - ../:/FEAT
+      - ../../notebooks/:/notebooks
+      - ../../../../software/t-rex-miner/:/t-rex-miner
+    runtime: nvidia
+    shm_size: '16gb'
+    command: bash -c "tail /dev/null -f"

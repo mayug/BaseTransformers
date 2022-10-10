@@ -16,4 +16,4 @@ embeds_cache/embeds_cache_crop2.pt filter=lfs diff=lfs merge=lfs -text
 embeds_cache/embeds_cache_r12.pt filter=lfs diff=lfs merge=lfs -text
 embeds_cache/embeds_cache_r12_imagenet.pt filter=lfs diff=lfs merge=lfs -text
 embeds_cache/embeds_cache_res12_2d_miniimagenet_train.pt filter=lfs diff=lfs merge=lfs -text
-embeds_cache/** filter=lfs diff=lfs merge=lfs -text
+embeds_cache/*.pt filter=lfs diff=lfs merge=lfs -text

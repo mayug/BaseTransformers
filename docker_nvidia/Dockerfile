@@ -1,4 +1,5 @@
 FROM nvcr.io/nvidia/pytorch:21.09-py3
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt update -y
 RUN apt install -y \
 wget \

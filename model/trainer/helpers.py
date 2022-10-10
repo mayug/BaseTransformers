@@ -27,7 +27,7 @@ from model.models.feat_basetransformer3_2d_sym import FEATBaseTransformer3_2d_sy
 # from model.models.feat_basetransformer3_2d_5shot import FEATBaseTransformer3_2d_5shot
 # from model.models.feat_basetransformer3_2d_5shot_v2 import FEATBaseTransformer3_2d_5shot_v2
 # from model.models.feat_basetransformer3_2d_5shot_v3 import FEATBaseTransformer3_2d_5shot_v3
-from model.models.feat_basetransformer3_2d_ctx import FEATBaseTransformer3_2d_ctx
+# from model.models.feat_basetransformer3_2d_ctx import FEATBaseTransformer3_2d_ctx
 # from model.models.feat_basetransformer3_2d_ctx_mix import FEATBaseTransformer3_2d_ctx_mix
 from model.models.deepset import DeepSet
 from model.models.bilstm import BILSTM

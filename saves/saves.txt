@@ -1,0 +1,1 @@
+This folder contains all the init weights for meta training stage. Store the best weights here after pretraining.

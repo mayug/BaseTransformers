@@ -10,7 +10,7 @@ import os
 import pandas as pd
 import sys
 sys.path.append('./SimCLR')
-from SimCLR.data_aug.view_generator import ContrastiveLearningViewGenerator
+from .simclr_view_generator import ContrastiveLearningViewGenerator
 
 # from data_aug.view_generator import ContrastiveLearningViewGenerator
 # from data_aug.contrastive_learning_dataset import ContrastiveLearningDataset

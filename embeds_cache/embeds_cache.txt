@@ -1,0 +1,1 @@
+This folder contains all the 2d base features cache as well as the corresponding closest base instances query cache.

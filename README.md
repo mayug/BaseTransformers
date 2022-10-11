@@ -1,6 +1,5 @@
 # BaseTransformers: Attention over base data-points for One Shot Learning
-
-The code repository for "BaseTransformers: Attention over base data-points for One Shot Learning" [[paper]]() [[ArXiv]]() [[slides]]() (Accepted by British Machine Vision Conference 2022) in PyTorch. If you use any content of this repo for your work, please cite the following bib entry:
+The code repository for "BaseTransformers: Attention over base data-points for One Shot Learning" [[paper]]() [[ArXiv]]() [[slides]]() (Accepted British Machine Vision Conference 2022) in PyTorch. If you use any content of this repo for your work, please cite the following bib entry:
 
 This repository has been adapted from the code repository of "Few-Shot Learning via Embedding Adaptation with Set-to-Set Functions" [[https://github.com/Sha-Lab/FEAT]](https://github.com/Sha-Lab/FEAT)
 
@@ -24,12 +23,12 @@ Experimental results on few-shot learning datasets with ResNet-12 backbone (Same
 
 **TieredImageNet Dataset**
 <p align="center">
-<img src='imgs/tiered.png' width='400' height='280'>
+<img src='imgs/tiered.png' width='300' height='280'>
 </p>
 
 **CUB Dataset**
 <p align="center">
-<img src='imgs/cub.png' width='500' height='280'>
+<img src='imgs/cub.png' width='450' height='200'>
 </p>
 
 ## Prerequisites
@@ -40,15 +39,17 @@ The following packages are required to run the scripts:
 
 - Package [tensorboardX](https://github.com/lanpa/tensorboardX)
 
-- wandb tensorboardX scipy pandas json2html cockpit-for-pytorch
+- wandb, tensorboardX, scipy, pandas, json2html, cockpit-for-pytorch
 
 - Dataset: please download the dataset and put images into the folder data/[name of the dataset, miniimagenet or cub]/images
 
 - Pre-trained weights: please download the [pre-trained weights]() of the encoder if needed. The pre-trained weights can be downloaded in a [zip file]() and place them in saves/.
 
+- Base 2d Cache and Query Cache: please download the base 2d cache and query cache as mentioned in the Cache section below and place them in embeds_cache/
+
 
 ## Docker
-Use docker to re-create the training environment we used. Requires docker, docker compose and nvidia-docker
+Alternatively, use docker to re-create the training environment we used. Requires docker, docker compose and nvidia-docker
 
 
     $ cd docker_nvidia/
@@ -57,8 +58,6 @@ Use docker to re-create the training environment we used. Requires docker, docke
       sudo docker exec -it BaseTransformers_n bash
 
 Run the training commands once inside the docker-bash
-
-Please create checkpoints folder before starting.
 
 
 ## Dataset
@@ -77,9 +76,27 @@ We only test TieredImageNet with ResNet backbone in our work.
 Check [this](https://github.com/Sha-Lab/FEAT/blob/master/data/README.md) for details of data downloading and preprocessing.
 
 
-## Querying Cache
+## Caches
 
-Base features are pre-calculated. Link. Closest base-instances are also saved as cache for faster training. Link. Download these and place in embeds_cache/
+Base 2d features cache: Base features are pre-calculated. 
+
+ConvNet
+ - [mini-ImageNet]()
+ - [CUB]()
+
+  
+Resnet-12
+ - [mini-ImageNet](https://drive.google.com/file/d/1f6wNjwA5KNuo2S41nQEpDdt1Ud8ktvze/view?usp=sharing)  
+ - [tiered-ImageNet]()
+ - [CUB]()
+
+Semantic querying cache: Closest base-instances are precalculated for faster training.
+ - [mini-ImageNet](https://drive.google.com/file/d/1wy3f-nXbHQEZK4OsYCfQX5GxxZsUcQX-/view?usp=sharing)
+ - [tiered-ImageNet]()
+ - [CUB]()
+
+
+Download both base 2d features cache and querying cache and place them in embeds_cache/
 
 ## Code Structures
 To reproduce our experiments with FEAT, please use **train_fsl.py**. There are four parts in the code.
@@ -164,20 +181,20 @@ Running the command without arguments will train the models with the default hyp
 
 ## Training scripts for BaseTransformers
 
-For example, to train the 1-shot/5-shot 5-way FEAT model with ConvNet backbone on MiniImageNet:
+<!-- For example, to train the 1-shot/5-shot 5-way FEAT model with ConvNet backbone on MiniImageNet:
 
     $ python train_fsl.py  --max_epoch 200 --model_class FEAT --use_euclidean --backbone_class ConvNet --dataset MiniImageNet --way 5 --eval_way 5 --shot 1 --eval_shot 1 --query 15 --eval_query 15 --balance 1 --temperature 64 --temperature2 16 --lr 0.0001 --lr_mul 10 --lr_scheduler step --step_size 20 --gamma 0.5 --gpu 8 --init_weights ./saves/initialization/miniimagenet/con-pre.pth --eval_interval 1
-    $ python train_fsl.py  --max_epoch 200 --model_class FEAT --use_euclidean --backbone_class ConvNet --dataset MiniImageNet --way 5 --eval_way 5 --shot 5 --eval_shot 5 --query 15 --eval_query 15 --balance 0.1 --temperature 32 --temperature2 64 --lr 0.0001 --lr_mul 10 --lr_scheduler step --step_size 20 --gamma 0.5 --gpu 14 --init_weights ./saves/initialization/miniimagenet/con-pre.pth --eval_interval 1
+    $ python train_fsl.py  --max_epoch 200 --model_class FEAT --use_euclidean --backbone_class ConvNet --dataset MiniImageNet --way 5 --eval_way 5 --shot 5 --eval_shot 5 --query 15 --eval_query 15 --balance 0.1 --temperature 32 --temperature2 64 --lr 0.0001 --lr_mul 10 --lr_scheduler step --step_size 20 --gamma 0.5 --gpu 14 --init_weights ./saves/initialization/miniimagenet/con-pre.pth --eval_interval 1  -->
 
 to train the 1-shot/5-shot 5-way FEAT model with ResNet-12 backbone on MiniImageNet:
 
-    $ python train_fsl.py  --max_epoch 200 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset MiniImageNet --way 5 --eval_way 5 --shot 1 --eval_shot 1 --query 15 --eval_query 15 --balance 0.1 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/mini_r12_ver2_corrected_140403.pth --eval_interval 1 --k 30 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --orig_imsize 128 --embed_pool post_loss_avg --dim_model 640 --remove_instances 1 --fast_query ./embeds_cache/fastq_imgnet_wordnet_pathsim_random-preset-wts.pt --embeds_cache_2d ./embeds_cache/embeds_cache_res12_ver2-640-140403_evalon_2d.pt --baseinstance_2d_norm True --return_simclr 2 --simclr_loss_type ver2.2 --wandb_mode disabled --exp_name mini_1shot --mixed_precision O2
-    $ python train_fsl.py  --max_epoch 200 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset MiniImageNet --way 5 --eval_way 5 --shot 5 --eval_shot 5 --query 15 --eval_query 15 --balance 0.1 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/mini_r12_ver2_corrected_140403.pth --eval_interval 1 --k 30 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --orig_imsize 128 --embed_pool post_loss_avg --dim_model 640 --remove_instances 1 --fast_query ./embeds_cache/fastq_imgnet_wordnet_pathsim_random-preset-wts.pt --embeds_cache_2d ./embeds_cache/embeds_cache_res12_ver2-640-140403_evalon_2d.pt --baseinstance_2d_norm True --return_simclr 2 --simclr_loss_type ver2.2 --wandb_mode disabled --exp_name mini_5shot --mixed_precision O2
+    $ python train_fsl.py  --max_epoch 200 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset MiniImageNet --way 5 --eval_way 5 --shot 1 --eval_shot 1 --query 15 --eval_query 15 --balance 0.1 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/mini_r12_ver2_corrected_140403.pth --eval_interval 1 --k 30 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --orig_imsize 128 --embed_pool post_loss_avg --dim_model 640 --remove_instances 1 --fast_query ./embeds_cache/fastq_imgnet_wordnet_pathsim_random-preset-wts.pt --embeds_cache_2d ./embeds_cache/embeds_cache_res12_ver2-640-140403_evalon_2d.pt --baseinstance_2d_norm True --return_simclr 2 --simclr_loss_type ver2.2 --wandb_mode disabled --exp_name mini_1shot --mixed_precision O2 --z_norm before_tx
+    $ python train_fsl.py  --max_epoch 200 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset MiniImageNet --way 5 --eval_way 5 --shot 5 --eval_shot 5 --query 15 --eval_query 15 --balance 0.1 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/mini_r12_ver2_corrected_140403.pth --eval_interval 1 --k 30 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --orig_imsize 128 --embed_pool post_loss_avg --dim_model 640 --remove_instances 1 --fast_query ./embeds_cache/fastq_imgnet_wordnet_pathsim_random-preset-wts.pt --embeds_cache_2d ./embeds_cache/embeds_cache_res12_ver2-640-140403_evalon_2d.pt --baseinstance_2d_norm True --return_simclr 2 --simclr_loss_type ver2.2 --wandb_mode disabled --exp_name mini_5shot --mixed_precision O2 --z_norm before_tx
 
 to train the 1-shot/5-shot 5-way FEAT model with ResNet-12 backbone on TieredImageNet:
 
-    $ python train_fsl.py  --max_epoch 200 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset TieredImageNet_og --way 5 --eval_way 5 --shot 1 --eval_shot 1 --query 15 --eval_query 15 --balance 0 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/tiered_imagenet_og/r12_og_nosimclr_180842.pth --eval_interval 1 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --embed_pool post_loss_avg --orig_imsize -1 --dim_model 640 --fast_query ./embeds_cache/fastq_tiered_wordnetdef-hypernyms-bert-closest_classes_randomsample_eqlwts_classes-sampling.pt --embeds_cache_2d ./embeds_cache/ti_og_r12-default-180842_classwise_2d_new.pt --k 30 --mixed_precision O2 --z_norm before_tx --wandb_mode disabled --exp_name tiered_1shot
-    $ python train_fsl.py  --max_epoch 200 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset TieredImageNet_og --way 5 --eval_way 5 --shot 5 --eval_shot 5 --query 15 --eval_query 15 --balance 0 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/tiered_imagenet_og/r12_og_nosimclr_180842.pth --eval_interval 1 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --embed_pool post_loss_avg --orig_imsize -1 --dim_model 640 --fast_query ./embeds_cache/fastq_tiered_wordnetdef-hypernyms-bert-closest_classes_randomsample_eqlwts_classes-sampling.pt --embeds_cache_2d ./embeds_cache/ti_og_r12-default-180842_classwise_2d_new.pt --k 30 --mixed_precision O2 --z_norm before_tx --wandb_mode disabled --exp_name tiered_1shot
+    $ python train_fsl.py  --max_epoch 200 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset TieredImageNet_og --way 5 --eval_way 5 --shot 1 --eval_shot 1 --query 15 --eval_query 15 --balance 0 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/tiered_imagenet_og/r12_og_nosimclr_180842.pth --eval_interval 1 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --embed_pool post_loss_avg --orig_imsize -1 --dim_model 640 --fast_query ./embeds_cache/fastq_tiered_wordnetdef-hypernyms-bert-closest_classes_randomsample_eqlwts_classes-sampling.pt --embeds_cache_2d ./embeds_cache/ti_og_r12-default-180842_classwise_2d_new.pt --k 30 --mixed_precision O2 --z_norm before_tx --wandb_mode disabled --exp_name tiered_1shot --z_norm before_tx
+    $ python train_fsl.py  --max_epoch 200 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset TieredImageNet_og --way 5 --eval_way 5 --shot 5 --eval_shot 5 --query 15 --eval_query 15 --balance 0 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/tiered_imagenet_og/r12_og_nosimclr_180842.pth --eval_interval 1 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --embed_pool post_loss_avg --orig_imsize -1 --dim_model 640 --fast_query ./embeds_cache/fastq_tiered_wordnetdef-hypernyms-bert-closest_classes_randomsample_eqlwts_classes-sampling.pt --embeds_cache_2d ./embeds_cache/ti_og_r12-default-180842_classwise_2d_new.pt --k 30 --mixed_precision O2 --z_norm before_tx --wandb_mode disabled --exp_name tiered_1shot --z_norm before_tx
 
 ## Acknowledgment
 We thank the following repos providing helpful components/functions in our work.

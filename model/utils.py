@@ -251,7 +251,7 @@ def get_command_line_parser():
     parser.add_argument('--augment',   action='store_true', default=False)
     parser.add_argument('--multi_gpu', action='store_true', default=False)
     parser.add_argument('--gpu', default='0')
-    parser.add_argument('--init_weights', type=str, default=None)
+    parser.add_argument('--init_weights', type=str, default=None) # initialize the BaseTransformer
     parser.add_argument('--init_weights_tx', type=str, default=None)
     
     parser.add_argument('--mixed_precision', type=str, default=None) # for old non amp checkpoints

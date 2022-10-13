@@ -38,6 +38,10 @@ Experimental results on few-shot learning datasets with ResNet-12 backbone (ResN
 <img src='imgs/cub.png' width='450' height='200'>
 </p>
 
+
+
+
+
 ## Prerequisites
 
 The following packages are required to run the scripts:
@@ -212,6 +216,20 @@ to train the 1-shot/5-shot 5-way BaseTransformer model with ResNet-12 backbone o
     $ python train_fsl.py  --max_epoch 100 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset TieredImageNet_og --way 5 --eval_way 5 --shot 1 --eval_shot 1 --query 15 --eval_query 15 --balance 0 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/tiered_r12_og_nosimclr_180842.pth --eval_interval 1 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --embed_pool post_loss_avg --orig_imsize -1 --dim_model 640 --fast_query ./embeds_cache/fastq_tiered_wordnetdef-hypernyms-bert-closest_classes_randomsample_eqlwts_classes-sampling.pt --embeds_cache_2d ./embeds_cache/ti_og_r12-default-180842_classwise_2d_new.pt --k 30 --mixed_precision O2 --wandb_mode disabled --exp_name tiered_1shot --z_norm before_tx
 
     $ python train_fsl.py  --max_epoch 100 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset TieredImageNet_og --way 5 --eval_way 5 --shot 5 --eval_shot 5 --query 15 --eval_query 15 --balance 0 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/tiered_r12_og_nosimclr_180842.pth --eval_interval 1 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --embed_pool post_loss_avg --orig_imsize -1 --dim_model 640 --fast_query ./embeds_cache/fastq_tiered_wordnetdef-hypernyms-bert-closest_classes_randomsample_eqlwts_classes-sampling.pt --embeds_cache_2d ./embeds_cache/ti_og_r12-default-180842_classwise_2d_new.pt --k 30 --mixed_precision O2 --wandb_mode disabled --exp_name tiered_5shot --z_norm before_tx
+
+
+
+
+## Trained weights BaseTransformers
+Trained weights are available at [gdrive_link](https://drive.google.com/drive/folders/1Zh8NPYP7FUD24HiNY_WoHKxBvZ-t4Mhu?usp=sharing). The names of the files are [dataset]_[encoder]_[numberofshots]shot.pth. 
+
+To check test performance use the training scripts as mentioned in 'Training scripts for BaseTransformers' section above with the test argument followed by path to the testing checkpoint.
+
+For example to test the performance of Conv4 1 shot on mini-Imagenet one would use the following command. 
+
+    $ python train_fsl.py  --max_epoch 200 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class ConvNet --dataset MiniImageNet --way 5 --eval_way 5 --shot 1 --eval_shot 1 --query 15 --eval_query 15 --balance 0.0 --temperature 0.1 --temperature2 0.1 --lr 0.0001 --lr_mul 10 --lr_scheduler step --step_size 20 --gamma 0.5 --gpu 0 --init_weights ./saves/mini_conv4_ver11_113120.pth --eval_interval 1 --k 40 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --embed_pool post_loss_avg --orig_imsize 128 --fast_query ./embeds_cache/fastq_imgnet_wordnet_pathsim_random-preset-wts.pt --embeds_cache_2d ./embeds_cache/embeds_cache_cnn4_contrastive-init-ver1-1-corrected_2d.pt --wandb_mode disabled --mixed_precision O2 --z_norm before_tx --test ./test_weights/mini_conv4_1shot.pth
+
+Note: It has been observed that using a higher k than that of the training results in higher performance for 1 shot.
 
 ## Acknowledgment
 We thank the following repos providing helpful components/functions in our work.

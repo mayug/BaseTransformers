@@ -33,7 +33,6 @@ class pca():
         else:
             print('Using previous v')
         a_pca = torch.matmul(a_normalized, self.v[:, :self.pca_dim])
-#         print(['here', a_pca.shape, self.s.shape])
         if self.whiten:
             
             a_pca = np.sqrt(n_samples) * (a_pca / self.s[:self.pca_dim])
@@ -75,8 +74,7 @@ def get_k_base(proto, all_proto, return_weights=False, k=10,
                train=True, remove_instances=False, all_classes=None, current_classes=None,
                random=False):
 
-    # print('proto ', proto.shape)
-    # print('all_proto ', all_proto.shape)
+
     
     # remove_instances, all_classes, current_classes are specifically for baseinstances case 
     mask = np.zeros(all_classes.shape).astype(np.bool)
@@ -94,10 +92,7 @@ def get_k_base(proto, all_proto, return_weights=False, k=10,
         start = 0
         end = 1
         
-    # print('all ', all_classes)
-    # print('current ', current_classes)
-    # print('remove_instances, train', [remove_instances, train])
-    # asd
+
     if random:
         mask = mask + 1
         a_ind = torch.randint(low=0, high=all_classes.shape[0], size=[proto.shape[0], k-1])
@@ -120,13 +115,10 @@ def get_k_base(proto, all_proto, return_weights=False, k=10,
         
         start = 0
         end = 1 
-        # print('here', mask.shape)
-        # print(all_proto.shape)
+
     
 
-    # print(['here', proto.shape, all_proto.shape])
-    # print(['proto stats', proto.min(), proto.max()])
-    # print(['all_proto stats', all_proto.min(), all_proto.max()])
+
     similarities = pairwise_distances_logits(proto, all_proto).squeeze()
     if similarities.dim() ==1:
         similarities = similarities.unsqueeze(0)
@@ -140,7 +132,6 @@ def get_k_base(proto, all_proto, return_weights=False, k=10,
         return a_ind[:, start:k-end], a[:, :k-start-end], mask
     
 
-    # print('top k inside ', a_ind[:, start:k-end])
     return a_ind[:, start:k-end], mask
 
 
@@ -285,56 +276,7 @@ class FEATBaseTransformer2(FewShotModel):
                 if args.embeds_cache_1d is not None:
                     print('loading 1d embeds_cache from args ', args.embeds_cache_1d)
                     proto_dict = torch.load(args.embeds_cache_1d)
-                # else:
-                #     if args.dataset == 'MiniImageNet':
-                #         print('gaga')
-                #         if args.backbone_class == 'ConvNet':
-                #             print('loading ./embeds_cache/embeds_cache_cnn4_contrastive-init-ver1-1-corrected.pt')
-                #             proto_dict = torch.load('./embeds_cache/embeds_cache_cnn4_contrastive-init-ver1-1-corrected.pt')
-                #             # print('loading ./embeds_cache/embeds_cache_cnn4_feat_trained_evalon_1d.pt')
-                #             # proto_dict = torch.load('./embeds_cache/embeds_cache_cnn4_feat_trained_evalon_1d.pt')
-                #             # print('loading ./embeds_cache/embeds_cache.pt')
-                #             # proto_dict = torch.load('./embeds_cache/embeds_cache.pt')
-                #             # print('loading ./embeds_cache/embeds_cache_cnn4_just_init_evaloff_nodropout_1d.pt')
-                #             # proto_dict = torch.load('./embeds_cache/embeds_cache_cnn4_just_init_evaloff_nodropout_1d.pt')
-
-
-                #         elif args.backbone_class == 'Res12':
-                #             # print('loading embeds_cache_r12_contrastive-init-ver2.pt')
-                #             # proto_dict = torch.load('./embeds_cache/embeds_cache_r12_contrastive-init-ver2.pt')
-                #             # print('loading embeds_cache_res12_1d_just_init.pt')
-                #             proto_dict = torch.load('./embeds_cache/embeds_cache_res12_1d_just_init.pt')
-                #             print('loading embeds_cache_res12_1d_just_init.pt')
-                #             # proto_dict = torch.load('./embeds_cache/embeds_cache_r12_feat_init_evaloff_1d.pt')
-                #             # print('loading embeds_cache_res12_feat_trained_evalon_1d.pt')
-                #             # proto_dict = torch.load('./embeds_cache/embeds_cache_res12_feat_trained_evalon_1d.pt')
-                #             # print('loading /embeds_cache_res12_ver2-128-111853_og-1_evalon_1d.pt')
-                #             # proto_dict = torch.load('./embeds_cache/embeds_cache_res12_ver2-128-111853_og-1_evalon_1d.pt')
-                #             # print('loading ./embeds_cache/embeds_cache_r12_just_init_evaloff_nodropout_1d.pt')
-                #             # proto_dict = torch.load('./embeds_cache/embeds_cache_r12_just_init_evaloff_nodropout_1d.pt')
-                #             # proto_dict = torch.load('/home/mayug/projects/few_shot/notebooks/embeds_cache_r12.pt')
-                #         elif args.backbone_class == 'Res12_ptcv':
-                #             print('loading res12 ptcv embeds cache 1d')
-                #             proto_dict = torch.load('/home/mayug/projects/few_shot/notebooks/embeds_cache_r12_imagenet.pt')
-                #         elif args.backbone_class == 'WRN':
-                #             print('loading embeds_cache_wrn_feat_init_evaloff_1d.pt')
-                #             proto_dict = torch.load('./embeds_cache/embeds_cache_wrn_feat_init_evaloff_1d.pt')
-                #         elif args.backbone_class == 'Res18':
-                #             # print('loading embeds_cache_res18_feat_init_evaloff_1d.pt')
-                #             # proto_dict = torch.load('./embeds_cache/embeds_cache_res18_feat_init_evaloff_1d.pt')
-                #             # print('loading embeds_cache_res18_ver1-512-185224_evalon_1d.pt')
-                #             # proto_dict = torch.load('./embeds_cache/embeds_cache_res18_ver1-512-185224_evalon_1d.pt')
-                #             print('loading embeds_cache_res18_ver1-512-185224_evaloff_nodropout_1d.pt')
-                #             proto_dict = torch.load('./embeds_cache/embeds_cache_res18_ver1-512-185224_evaloff_nodropout_1d.pt')
-                #         # proto_dict = torch.load('/home/mayug/projects/few_shot/notebooks/embeds_cache_feat1.pt')
-                #     elif args.dataset == 'CUB':
-                #         if args.backbone_class == 'ConvNet':
-                #             print('Using CUB dataset embeds cache')
-                #             proto_dict = torch.load('/home/mayug/projects/few_shot/notebooks/embeds_cache_cnn4_cub.pt')
-                #         elif args.backbone_class == 'Res12':
-                #             proto_dict = torch.load('/home/mayug/projects/few_shot/notebooks/embeds_cache_r12_cub.pt')
-                #         elif args.backbone_class == 'Res12_ptcv':
-                #             proto_dict = torch.load('/home/mayug/projects/few_shot/notebooks/embeds_cache_r12_imagenet.pt')
+   
                 self.all_proto = proto_dict['embeds'].cuda() 
                 if self.args.mixed_precision is not None and self.args.mixed_precision!='O0':
                     print('halving the embeds_cache 1d')
@@ -437,17 +379,11 @@ class FEATBaseTransformer2(FewShotModel):
                         train=self.training, random=self.random)
 
         self.top_k = (top_k, mask)
-        # print(proto.shape)
-        # print(top_k)
-        # print('mask sum ', mask.sum())
-        # print('before masking ', self.all_proto.shape)
+        
         all_proto = self.all_proto[~mask]
-        # print('after masking ', all_proto.shape)
-        # print('top_k ids ', top_k)
+
         base_protos = all_proto[top_k, :]
-        # print(base_protos.shape)
-        # base_protos = base_protos.mean(1).unsqueeze(0)
-        # print('base_protos shape ', base_protos.shape)
+
         return base_protos
 
     def _forward(self, instance_embs, support_idx, query_idx, ids=None):
@@ -468,23 +404,16 @@ class FEATBaseTransformer2(FewShotModel):
         with torch.no_grad():
             base_protos = self.get_base_protos(proto, ids)
         
-        # print('base_protos', base_protos.shape)
-        # print('proto ', proto.shape)
         
         # including base_protos into key and value
         proto = proto.squeeze()
-        # print('base_protos.shape ', base_protos.shape)
-        # print('proto.shape ', proto.shape)
 
-        # combined_protos = torch.cat([proto.unsqueeze(1), base_protos], dim=1)
         combined_protos = base_protos
 
-        # print('combined_protos.shape ', combined_protos.shape)
         proto = proto.unsqueeze(0)
 
         combined_protos = combined_protos.reshape(-1, emb_dim).unsqueeze(0)
-        # print('proto.shape ', proto.shape)
-        # print('combined_protos.shape ', combined_protos.shape)
+
         num_batch = proto.shape[0]
         num_proto = proto.shape[1]
         num_query = np.prod(query_idx.shape[-2:])
@@ -492,7 +421,6 @@ class FEATBaseTransformer2(FewShotModel):
         # query: (num_batch, num_query, num_proto, num_emb)
         # proto: (num_batch, num_proto, num_emb)
         
-        # print('before slf attention proto, combined proto', [proto.shape, combined_protos.shape])
         proto = self.slf_attn(proto, combined_protos, combined_protos)
 
         if self.feat_attn==1:

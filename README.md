@@ -244,3 +244,7 @@ We thank the following repos providing helpful components/functions in our work.
 
 - [MetaOptNet](https://github.com/kjunelee/MetaOptNet/)
 
+
+## Contact
+Feel free to contact me at mayugmaniparambil@gmail.com for any discussions.
+

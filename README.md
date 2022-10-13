@@ -220,7 +220,7 @@ to train the 1-shot/5-shot 5-way BaseTransformer model with ResNet-12 backbone o
 
 
 
-## Trained weights BaseTransformers
+## Trained weights for BaseTransformers
 Trained weights are available at [gdrive_link](https://drive.google.com/drive/folders/1Zh8NPYP7FUD24HiNY_WoHKxBvZ-t4Mhu?usp=sharing). The names of the files are [dataset]_[encoder]_[numberofshots]shot.pth. 
 
 To check test performance use the training scripts as mentioned in 'Training scripts for BaseTransformers' section above with the test argument followed by path to the testing checkpoint.
@@ -246,5 +246,5 @@ We thank the following repos providing helpful components/functions in our work.
 
 
 ## Contact
-Feel free to contact me at mayugmaniparambil@gmail.com for any discussions.
+Feel free to raise and issue or contact me at mayugmaniparambil@gmail.com for queries and discussions.
 

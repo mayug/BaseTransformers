@@ -283,7 +283,7 @@ def get_command_line_parser():
     parser.add_argument('--image_size', type=int, default=None)
 
     # this is for proto_bit3_2d; whats pooling before final euclidian calc;
-    parser.add_argument('--embed_pool', type=str, default='max_pool')
+    parser.add_argument('--embed_pool', type=str, default='post_loss_avg')
 
     parser.add_argument('--exp_name', type=str, default=None)
     parser.add_argument('--drop_rate', type=float, default=0.1)

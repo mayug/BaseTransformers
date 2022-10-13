@@ -1,0 +1,240 @@
+On BaseTransformers master
+
+
+## baseinstance_norm2d, meta simclr
+
+saved class accuracy json in ./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k30_
+bwt0.1_20221010_103921-NoAug 
+
+
+Test acc=0.6973 + 0.0019
+
+class wise test accuracies 
+{0: 0.6320170525344051, 1: 0.6232712558738688, 2: 0.717530119968241, 3: 0.7311894189206976, 4: 0.6670915020213629, 5: 0.7557753496538087, 6: 0.6640422330872918, 7: 0.7928795086374051, 8: 0.573640310204015, 9: 0.7206584090282958, 10: 0.6730236055303112, 11: 0.7219428198512439, 12: 0.5381194201068769, 13: 0.51533519788046, 14: 0.7077296992687745, 15: 0.6862974115544587, 16: 0.9065885696298214, 17: 0.7301600822185884, 18: 0.6706596886650947, 19: 0.9146157278334748}
+saved class accuracy json in ./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k30_bwt0.1_20221010_103921-NoAug
+Saving class accuracy json in wandb as a file
+here    
+{0: 0.6320170525344051, 1: 0.6232712558738688, 2: 0.717530119968241, 3: 0.7311894189206976, 4: 0.6670915020213629, 5: 0.7557753496538087, 6: 0.6640422330872918, 7: 0.7928795086374051, 8: 0.573640310204015, 9: 0.7206584090282958, 10: 0.6730236055303112, 11: 0.7219428198512439, 12: 0.5381194201068769, 13: 0.51533519788046, 14: 0.7077296992687745, 15: 0.6862974115544587, 16: 0.9065885696298214, 17: 0.7301600822185884, 18: 0.6706596886650947, 19: 0.9146157278334748, 'max_acc_epoch': 58, 'best_val_acc': 0.7446666847666105, 'test_acc': 0.6973333485752344}
+
+
+
+
+## No baseinstancenorm2d, yes meta simclr
+
+best epoch 111, best val acc=0.7473 + 0.0079
+
+Test acc=0.6971 + 0.0019
+
+class wise test accuracies 
+{0: 0.6211442097298632, 1: 0.5703444099478546, 2: 0.7480879073539725, 3: 0.7066283555197832, 4: 0.6485894648916851, 5: 0.7815563799610362, 6: 0.6775259559360814, 7: 0.8001613352628004, 8: 0.6019849440688497, 9: 0.784909299780271, 10: 0.6773217939010928, 11: 0.6835573507067957, 12: 0.5608212667622969, 13: 0.5101867382808957, 14: 0.710009219997959, 15: 0.7144811300145746, 16: 0.9032918650486903, 17: 0.7280270905756087, 18: 0.6232886336631728, 19: 0.8921947855634796}
+saved class accuracy json in ./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k30_bwt0.1_20221010_133229-NoAug
+Saving class accuracy json in wandb as a file
+here    
+{0: 0.6211442097298632, 1: 0.5703444099478546, 2: 0.7480879073539725, 3: 0.7066283555197832, 4: 0.6485894648916851, 5: 0.7815563799610362, 6: 0.6775259559360814, 7: 0.8001613352628004, 8: 0.6019849440688497, 9: 0.784909299780271, 10: 0.6773217939010928, 11: 0.6835573507067957, 12: 0.5608212667622969, 13: 0.5101867382808957, 14: 0.710009219997959, 15: 0.7144811300145746, 16: 0.9032918650486903, 17: 0.7280270905756087, 18: 0.6232886336631728, 19: 0.8921947855634796, 'max_acc_epoch': 111, 'best_val_acc': 0.7472889061768849, 'test_acc': 0.6971333484053612}
+./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k30_bwt0.1_20221010_133229-NoAug
+
+
+
+On FEAT 12af37bdb3a587c5b87d71a1a7f2be1b5795b729
+
+## No baseinstancenorm2d, yes meta simclr
+
+
+best epoch 36, best val acc=0.7503 + 0.0078
+
+Test acc=0.7000 + 0.0019
+
+class wise test accuracies 
+{0: 0.6118478155039057, 1: 0.6029258428672831, 2: 0.7638844620245071, 3: 0.7271656366012623, 4: 0.6655440098712854, 5: 0.7396876992949666, 6: 0.6509850522792413, 7: 0.791619553559715, 8: 0.5657922923150333, 9: 0.7899437195659633, 10: 0.67556998179792, 11: 0.6926449226240269, 12: 0.549920157231866, 13: 0.5442155172818852, 14: 0.7097147953946413, 15: 0.6957659463678457, 16: 0.9158736832042974, 17: 0.734721127100744, 18: 0.6568293043510689, 19: 0.9158317521243423}
+saved class accuracy json in ./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k30_bwt0.1_20221010_140608-NoAug
+Saving class accuracy json in wandb as a file
+here    
+{0: 0.6118478155039057, 1: 0.6029258428672831, 2: 0.7638844620245071, 3: 0.7271656366012623, 4: 0.6655440098712854, 5: 0.7396876992949666, 6: 0.6509850522792413, 7: 0.791619553559715, 8: 0.5657922923150333, 9: 0.7899437195659633, 10: 0.67556998179792, 11: 0.6926449226240269, 12: 0.549920157231866, 13: 0.5442155172818852, 14: 0.7097147953946413, 15: 0.6957659463678457, 16: 0.9158736832042974, 17: 0.734721127100744, 18: 0.6568293043510689, 19: 0.9158317521243423, 'max_acc_epoch': 36, 'best_val_acc': 0.7503333502014478, 'test_acc': 0.6999613484054804}
+./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k30_bwt0.1_20221010_140608-NoAug
+
+## Yes baseinstancenorm2d, yes meta simclr
+Test acc=0.7013 + 0.0019
+
+class wise test accuracies 
+{0: 0.6379641217076616, 1: 0.6116102260894857, 2: 0.751604379660783, 3: 0.7252355845968077, 4: 0.6285561710829374, 5: 0.7538711300831751, 6: 0.683165685097936, 7: 0.8042809111923099, 8: 0.5844807303460567, 9: 0.8102420438731033, 10: 0.6729367992502309, 11: 0.6567043983685962, 12: 0.5425445990821106, 13: 0.5237982001601108, 14: 0.727655640066337, 15: 0.7073511648808417, 16: 0.9265633699154486, 17: 0.7131033035461407, 18: 0.6482517837742885, 19: 0.9261061068676472}
+saved class accuracy json in ./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k30_bwt0.1_20221010_162639-NoAug
+Saving class accuracy json in wandb as a file
+here    
+{0: 0.6379641217076616, 1: 0.6116102260894857, 2: 0.751604379660783, 3: 0.7252355845968077, 4: 0.6285561710829374, 5: 0.7538711300831751, 6: 0.683165685097936, 7: 0.8042809111923099, 8: 0.5844807303460567, 9: 0.8102420438731033, 10: 0.6729367992502309, 11: 0.6567043983685962, 12: 0.5425445990821106, 13: 0.5237982001601108, 14: 0.727655640066337, 15: 0.7073511648808417, 16: 0.9265633699154486, 17: 0.7131033035461407, 18: 0.6482517837742885, 19: 0.9261061068676472, 'max_acc_epoch': 30, 'best_val_acc': 0.7459333504239718, 'test_acc': 0.7013320151790976}
+./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k30_bwt0.1_20221010_162639-NoAug
+
+
+FEAT commit 91ffdf3e0ec03d74e0db189c16c295ee90f25f4f
+
+meta_simlcr, Z-norm before tx, no baseinstancenorm
+
+best epoch 90, best val acc=0.7476 + 0.0079
+
+Test acc=0.7045 + 0.0019
+
+class wise test accuracies 
+{0: 0.6350033733792203, 1: 0.6484507405332167, 2: 0.7595641955198107, 3: 0.7272317634100135, 4: 0.674854303282257, 5: 0.7610913722139896, 6: 0.6637585977437324, 7: 0.8076090339592416, 8: 0.5771808729552144, 9: 0.7784290762909576, 10: 0.6758621054873757, 11: 0.682637811475471, 12: 0.5964415999610706, 13: 0.5587276853385975, 14: 0.6975116815901328, 15: 0.6903614797625658, 16: 0.9268936617528505, 17: 0.7288381037822333, 18: 0.6100649675112481, 19: 0.8819401056332394}
+saved class accuracy json in ./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k50_bwt0.1_20221010_204442-NoAug
+Saving class accuracy json in wandb as a file
+here    
+{0: 0.6350033733792203, 1: 0.6484507405332167, 2: 0.7595641955198107, 3: 0.7272317634100135, 4: 0.674854303282257, 5: 0.7610913722139896, 6: 0.6637585977437324, 7: 0.8076090339592416, 8: 0.5771808729552144, 9: 0.7784290762909576, 10: 0.6758621054873757, 11: 0.682637811475471, 12: 0.5964415999610706, 13: 0.5587276853385975, 14: 0.6975116815901328, 15: 0.6903614797625658, 16: 0.9268936617528505, 17: 0.7288381037822333, 18: 0.6100649675112481, 19: 0.8819401056332394, 'max_acc_epoch': 90, 'best_val_acc': 0.7476444614430269, 'test_acc': 0.7045346818864345}
+./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k50_bwt0.1_20221010_204442-NoAug
+
+meta_simlcr, Z-norm before tx, yes baseinstancenorm, k50
+
+best epoch 50, best val acc=0.7510 + 0.0077
+
+Test acc=0.7070 + 0.0019
+
+class wise test accuracies 
+{0: 0.628775077812994, 1: 0.6676533716768025, 2: 0.748869975658994, 3: 0.6504260605268942, 4: 0.6342589215163741, 5: 0.7685088440294999, 6: 0.672077780265077, 7: 0.8270833748333829, 8: 0.5986971007447688, 9: 0.805132374248525, 10: 0.6887891535004796, 11: 0.6946392971143901, 12: 0.5680253567446052, 13: 0.5439860054885546, 14: 0.7594158682116056, 15: 0.7251600962684839, 16: 0.9042032700944734, 17: 0.7322257776756447, 18: 0.5926588432593148, 19: 0.9212360600894963}
+saved class accuracy json in ./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k50_bwt0.1_20221010_214211-NoAug
+Saving class accuracy json in wandb as a file
+here    
+{0: 0.628775077812994, 1: 0.6676533716768025, 2: 0.748869975658994, 3: 0.6504260605268942, 4: 0.6342589215163741, 5: 0.7685088440294999, 6: 0.672077780265077, 7: 0.8270833748333829, 8: 0.5986971007447688, 9: 0.805132374248525, 10: 0.6887891535004796, 11: 0.6946392971143901, 12: 0.5680253567446052, 13: 0.5439860054885546, 14: 0.7594158682116056, 15: 0.7251600962684839, 16: 0.9042032700944734, 17: 0.7322257776756447, 18: 0.5926588432593148, 19: 0.9212360600894963, 'max_acc_epoch': 50, 'best_val_acc': 0.7510000167787075, 'test_acc': 0.706998682102561}
+./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k50_bwt0.1_20221010_214211-NoAug
+
+
+5shot mini, simclr, z_norm, baseinstance2d
+best epoch 199, best val acc=0.8529 + 0.0055
+
+Test acc=0.8168 + 0.0014
+
+class wise test accuracies 
+{0: 0.7596616867300439, 1: 0.765434105750582, 2: 0.8532501652708939, 3: 0.7289994982868014, 4: 0.7618932447344986, 5: 0.8714038939949521, 6: 0.8121361521092932, 7: 0.8846899715942196, 8: 0.7142744208645424, 9: 0.9007603380144863, 10: 0.8221773563634991, 11: 0.8049182978280895, 12: 0.7455031098850115, 13: 0.7671763129161404, 14: 0.8779592770351641, 15: 0.855253585659224, 16: 0.9556608970437381, 17: 0.8830736914230641, 18: 0.6848944171122827, 19: 0.8882304897646847}
+saved class accuracy json in ./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w05s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz100_k30_bwt0.1_20221011_123025-NoAug
+
+
+--> BaseTransformers master commit
+
+with z-norm, baseinstance2d, simclr loss, k50
+
+best epoch 90, best val acc=0.7479 + 0.0072
+
+Test acc=0.7048 + 0.0019
+
+class wise test accuracies 
+{0: 0.5854512275223815, 1: 0.6165128131884975, 2: 0.7385069339131324, 3: 0.7014243132118991, 4: 0.6602014155469139, 5: 0.7695199790306784, 6: 0.6692575033133229, 7: 0.7925350370282421, 8: 0.590960932959974, 9: 0.7961857701075653, 10: 0.6870020489697484, 11: 0.7000673783578057, 12: 0.5598397200732541, 13: 0.5673866975903511, 14: 0.7196532154592676, 15: 0.7054922358549304, 16: 0.9192815853014183, 17: 0.7287915390148103, 18: 0.6620643608780417, 19: 0.9132287642575292}
+saved class accuracy json in ./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k50_bwt0.1_20221011_082453-NoAug
+Saving class accuracy json in wandb as a file
+here    
+{0: 0.5854512275223815, 1: 0.6165128131884975, 2: 0.7385069339131324, 3: 0.7014243132118991, 4: 0.6602014155469139, 5: 0.7695199790306784, 6: 0.6692575033133229, 7: 0.7925350370282421, 8: 0.590960932959974, 9: 0.7961857701075653, 10: 0.6870020489697484, 11: 0.7000673783578057, 12: 0.5598397200732541, 13: 0.5673866975903511, 14: 0.7196532154592676, 15: 0.7054922358549304, 16: 0.9192815853014183, 17: 0.7287915390148103, 18: 0.6620643608780417, 19: 0.9132287642575292, 'max_acc_epoch': 90, 'best_val_acc': 0.7478666832546393, 'test_acc': 0.7048040152490139}
+./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k50_bwt0.1_20221011_082453-NoAug
+
+python train_fsl.py  --max_epoch 100 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset MiniImageNet --way 5 --eval_way 5 --shot 1 --eval_shot 1 --query 15 --eval_query 15 --balance 0.1 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/mini_r12_ver2_corrected_140403.pth --eval_interval 1 --k 30 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --orig_imsize 128 --embed_pool post_loss_avg --dim_model 640 --remove_instances 1 --fast_query ./embeds_cache/fastq_imgnet_wordnet_pathsim_random-preset-wts.pt --embeds_cache_2d ./embeds_cache/embeds_cache_res12_ver2-640-140403_evalon_2d.pt --z_norm before_tx --return_simclr 2 --simclr_loss_type ver2.2 --wandb_mode disabled --exp_name test --mixed_precision O2 --baseinstance_2d_norm True
+
+best epoch 100, best val acc=0.7498 + 0.0079
+
+Test acc=0.7074 + 0.0019
+
+class wise test accuracies 
+{0: 0.6401949190586458, 1: 0.657634445592281, 2: 0.7042848186440831, 3: 0.7093804713079899, 4: 0.6735550656513578, 5: 0.7904917040929865, 6: 0.6881632906380966, 7: 0.8277454088195341, 8: 0.587448507288823, 9: 0.7943472405674631, 10: 0.708540635935718, 11: 0.6774497952072134, 12: 0.5464887735401854, 13: 0.5388736739369154, 14: 0.7243382340746912, 15: 0.7320299060548643, 16: 0.9087955865702002, 17: 0.7280551616753372, 18: 0.6344480172932686, 19: 0.8737741474801107}
+saved class accuracy json in ./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k30_bwt0.1_20221011_103553-NoAug
+Saving class accuracy json in wandb as a file
+here    
+{0: 0.6401949190586458, 1: 0.657634445592281, 2: 0.7042848186440831, 3: 0.7093804713079899, 4: 0.6735550656513578, 5: 0.7904917040929865, 6: 0.6881632906380966, 7: 0.8277454088195341, 8: 0.587448507288823, 9: 0.7943472405674631, 10: 0.708540635935718, 11: 0.6774497952072134, 12: 0.5464887735401854, 13: 0.5388736739369154, 14: 0.7243382340746912, 15: 0.7320299060548643, 16: 0.9087955865702002, 17: 0.7280551616753372, 18: 0.6344480172932686, 19: 0.8737741474801107, 'max_acc_epoch': 100, 'best_val_acc': 0.7498222400744756, 'test_acc': 0.7073600152313709}
+./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz080_k30_bwt0.1_20221011_103553-NoAug
+
+
+mini 5 shot
+
+python train_fsl.py  --max_epoch 200 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset MiniImageNet --way 5 --eval_way 5 --shot 5 --eval_shot 5 --query 15 --eval_query 15 --balance 0.1 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/mini_r12_ver2_corrected_140403.pth --eval_interval 1 --k 30 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --orig_imsize 128 --embed_pool post_loss_avg --dim_model 640 --remove_instances 1 --fast_query ./embeds_cache/fastq_imgnet_wordnet_pathsim_random-preset-wts.pt --embeds_cache_2d ./embeds_cache/embeds_cache_res12_ver2-640-140403_evalon_2d.pt --baseinstance_2d_norm True --return_simclr 2 --simclr_loss_type ver2.2 --wandb_mode disabled --exp_name mini_5shot --mixed_precision O2 --z_norm before_tx
+
+z_norm before tx, baseinstancenorm, metasimclr, 0.1,0.1,0.1
+
+best epoch 156, best val acc=0.8527 + 0.0054
+
+Test acc=0.8164 + 0.0014
+
+class wise test accuracies 
+{0: 0.7557379612411638, 1: 0.7727886103877252, 2: 0.8452930631102696, 3: 0.7318139744729609, 4: 0.7585614173351969, 5: 0.8733470026761716, 6: 0.8223012409910058, 7: 0.8452449664077072, 8: 0.726149345785199, 9: 0.8782035818359575, 10: 0.8311146174297578, 11: 0.8128255904949448, 12: 0.7346890355851001, 13: 0.7533387376965057, 14: 0.8967682000380964, 15: 0.8623921480864292, 16: 0.956037507466523, 17: 0.8974401102178418, 18: 0.6982051669949514, 19: 0.8896979857959503}
+saved class accuracy json in ./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w05s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.1_bsz100_k30_bwt0.1_20221011_122751-NoAug
+
+best epoch 120, best val acc=0.8565 + 0.0050
+
+
+z_norm before tx, baseinstancenorm
+
+Test acc=0.8164 + 0.0014
+
+class wise test accuracies 
+{0: 0.7749353364006467, 1: 0.7864948780340769, 2: 0.8492133111760563, 3: 0.7452297622002663, 4: 0.739277148133061, 5: 0.8656573841024349, 6: 0.812642792520295, 7: 0.8594933823108674, 8: 0.745956801561068, 9: 0.8906254611354463, 10: 0.8161763191847776, 11: 0.786220833419024, 12: 0.7186895206131834, 13: 0.7645603375359296, 14: 0.8694150060658546, 15: 0.8581414199874366, 16: 0.9546915315432605, 17: 0.8869864377907433, 18: 0.7021614016482679, 19: 0.903272179156804}
+saved class accuracy json in ./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w05s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.0_bsz100_k30_bwt0.1_20221011_164248-NoAug
+Saving class accuracy json in wandb as a file
+here    
+{0: 0.7749353364006467, 1: 0.7864948780340769, 2: 0.8492133111760563, 3: 0.7452297622002663, 4: 0.739277148133061, 5: 0.8656573841024349, 6: 0.812642792520295, 7: 0.8594933823108674, 8: 0.745956801561068, 9: 0.8906254611354463, 10: 0.8161763191847776, 11: 0.786220833419024, 12: 0.7186895206131834, 13: 0.7645603375359296, 14: 0.8694150060658546, 15: 0.8581414199874366, 16: 0.9546915315432605, 17: 0.8869864377907433, 18: 0.7021614016482679, 19: 0.903272179156804, 'max_acc_epoch': 120, 'best_val_acc': 0.8564889092246691, 'test_acc': 0.8164120193779468}
+./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w05s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.0_bsz100_k30_bwt0.1_20221011_164248-NoAug
+
+
+only z_norm before tx
+Test acc=0.8126 + 0.0014                                                                                                                                                                     
+                                                                                                                                                                                             
+./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w05s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.0_bsz100_k30_bwt0.1_20221011_212105-NoAug
+
+
+81.85 with k10
+./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w05s15q-Pre-DIS/40_0.5_lr0.0005mul10_step_T10.1T20.1_
+b0.0_bsz100_k10_bwt0.1_20221012_104617-NoAug
+
+
+
+python train_fsl.py  --max_epoch 200 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset MiniImageNet --way 5 --eval_way 5 --shot 5 --eval_shot 5 --query 15 --eval_query 15 --balance 0 --temperature 0.1 --temperature2 0.1 --lr 0.0005 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/mini_r12_ver2_corrected_140403.pth --eval_interval 1 --k 5 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --orig_imsize 128 --embed_pool post_loss_avg --dim_model 640 --remove_instances 1 --fast_query ./embeds_cache/fastq_imgnet_wordnet_pathsim_random-preset-wts.pt --embeds_cache_2d ./embeds_cache/embeds_cache_res12_ver2-640-140403_evalon_2d.pt --baseinstance_2d_norm True --wandb_mode disabled --exp_name mini_5shot --mixed_precision O2 --z_norm before_tx
+
+best epoch 177, best val acc=0.8545 + 0.0052
+
+Test acc=0.8188 + 0.0014
+
+{0: 0.7695215863192677, 1: 0.7877344209206056, 2: 0.8305989400673371, 3: 0.7636880911402502, 4: 0.7881029346221132, 5: 0.8517241718870406, 6: 0.8254802341538992, 7: 0.8556140127497261, 8: 0.7914729037986066, 9: 0.8937221941507605, 10: 0.829450537737028, 11: 0.8016318389303919, 12: 0.7061838076058284, 13: 0.7642570697339658, 14: 0.8665873094204161, 15: 0.8589532077558774, 16: 0.9432403986078809, 17: 0.8667726193016909, 18: 0.6779241268454512, 19: 0.9108299644017704, 'max_acc_epoch': 177, 'best_val_acc': 0.8544889095425606, 'test_acc': 0.8188066860020161}
+./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-Res12-05w05s15q-Pre-DIS/40_0.5_lr0.0005mul10_step_T10.1T20.1_b0.0_bsz100_k5_bwt0.1_20221012_145322-NoAug
+
+
+
+tiered
+
+1shot
+
+python train_fsl.py  --max_epoch 100 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset TieredImageNet_og --way 5 --eval_way 5 --shot 1 --eval_shot 1 --query 15 --eval_query 15 --balance 0 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/tiered_r12_og_nosimclr_180842.pth --eval_interval 1 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --embed_pool post_loss_avg --orig_imsize -1 --dim_model 640 --fast_query ./embeds_cache/fastq_tiered_wordnetdef-hypernyms-bert-closest_classes_randomsample_eqlwts_classes-sampling.pt --embeds_cache_2d ./embeds_cache/ti_og_r12-default-180842_classwise_2d_new.pt --k 30 --mixed_precision O2 --z_norm before_tx --wandb_mode disabled --baseinstance_2d_norm True
+
+
+best epoch 89, best val acc=0.7036 + 0.0088                                                                                                                                                  
+                                                                                                                                                                                             
+Test acc=0.7232 + 0.0022
+
+./checkpoints/TieredImageNet_og-FEATBaseTransformer3_2d-Res12-05w01s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.0_bsz080_k30_bwt0.1_20221011_160950-NoAug
+
+
+5shot
+
+best epoch 60, best val acc=0.8458 + 0.0063                                                                                                                                                  
+                                                                                                                                                                                             
+Test acc=0.8511 + 0.0016  
+
+./checkpoints/TieredImageNet_og-FEATBaseTransformer3_2d-Res12-05w05s15q-Pre-DIS/40_0.5_lr0.0002mul10_step_T10.1T20.1_b0.0_bsz100_k30_bwt0.1_20221011_161325-NoAug
+
+
+Conv 1 shot
+
+python train_fsl.py  --max_epoch 200 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class ConvNet --dataset MiniImageNet --way 5 --eval_way 5 --shot 1 --eval_shot 1 --query 15 --eval_query 15 --balance 0.0 --temperature 0.1 --temperature2 0.1 --lr 0.0001 --lr_mul 10 --lr_scheduler step --step_size 20 --gamma 0.5 --gpu 0 --init_weights ./saves/mini_conv4_ver11_113120.pth --eval_interval 1 --k 30 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --embed_pool post_loss_avg --orig_imsize 128 --fast_query ./embeds_cache/fastq_imgnet_wordnet_pathsim_random-preset-wts.pt --embeds_cache_2d ./embeds_cache/embeds_cache_cnn4_contrastive-init-ver1-1-corrected_2d.pt --wandb_mode disabled --mixed_precision O2 --z_norm before_tx
+
+
+best epoch 69, best val acc=0.6002 + 0.0077
+
+Test acc=0.5969 + 0.0019
+
+class wise test accuracies 
+{0: 0.5600420899706818, 1: 0.6008290192041333, 2: 0.6839707417881907, 3: 0.5841840539217338, 4: 0.5632803236578539, 5: 0.7203065493290643, 6: 0.6657337398558351, 7: 0.599630247689371, 8: 0.4664513787610376, 9: 0.656534200309197, 10: 0.5236412594925212, 11: 0.4564061483501858, 12: 0.46927332715094544, 13: 0.39089694252933305, 14: 0.5529003239295768, 15: 0.6325197198347552, 16: 0.8242068540726596, 17: 0.6236111449649908, 18: 0.5244444714711297, 19: 0.8334277347784708}
+saved class accuracy json in ./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-ConvNet-05w01s15q-Pre-DIS/20_0.5_lr0.0001mul10_step_T10.1T20.1_b0.0_bsz080_k30_bwt0.1_20221012_161725-NoAug
+
+
+Conv 5 shot
+
+python train_fsl.py  --max_epoch 200 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class ConvNet --dataset MiniImageNet --way 5 --eval_way 5 --shot 5 --eval_shot 5 --query 15 --eval_query 15 --balance 0 --temperature 0.1 --temperature2 0.1 --lr 0.0001 --lr_mul 10 --lr_scheduler step --step_size 20 --gamma 0.5 --gpu 0 --init_weights ./saves/mini_conv4_ver11_113120.pth --eval_interval 1 --k 30 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --embed_pool post_loss_avg --orig_imsize 128 --fast_query ./embeds_cache/fastq_imgnet_wordnet_pathsim_random-preset-wts.pt --embeds_cache_2d ./embeds_cache/embeds_cache_cnn4_contrastive-init-ver1-1-corrected_2d.pt --wandb_mode disabled --mixed_precision O2 --z_norm before_tx
+
+best epoch 165, best val acc=0.7312 + 0.0064
+
+Test acc=0.7328 + 0.0015
+
+class wise test accuracies 
+{0: 0.6354238252133889, 1: 0.7822712236366156, 2: 0.7910121523248552, 3: 0.6481051514102971, 4: 0.7353033069231517, 5: 0.8027710895008193, 6: 0.8159606036045951, 7: 0.6849449569779684, 8: 0.6272364562115494, 9: 0.8309916119105799, 10: 0.6610865533651729, 11: 0.6794110136218818, 12: 0.559079381424539, 13: 0.6673647824958403, 14: 0.7223686366618995, 15: 0.8071812237134367, 16: 0.8959395282006096, 17: 0.8108397209028457, 18: 0.6241526885078933, 19: 0.8760635905413137}
+saved class accuracy json in ./checkpoints/MiniImageNet-FEATBaseTransformer3_2d-ConvNet-05w05s15q-Pre-DIS/20_0.5_lr0.0001mul10_step_T10.1T20.1_b0.0_bsz100_k30_bwt0.1_20221012_172248-NoAug
+

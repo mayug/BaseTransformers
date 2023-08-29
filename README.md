@@ -1,11 +1,13 @@
 # BaseTransformers: Attention over base data-points for One Shot Learning
-The code repository for "BaseTransformers: Attention over base data-points for One Shot Learning" [[paper]]() [[ArXiv]]() [[slides]]() (Accepted British Machine Vision Conference 2022) in PyTorch. If you use any content of this repo for your work, please cite the following bib entry:
+The code repository for "BaseTransformers: Attention over base data-points for One Shot Learning" [[paper]](https://bmvc2022.mpi-inf.mpg.de/482/) [[ArXiv]](https://arxiv.org/abs/2210.02476) (Accepted British Machine Vision Conference 2022) in PyTorch. If you use any content of this repo for your work, please cite the following bib entry:
 
-    @article{maniparambil2022basetransformers,
-    title={BaseTransformers: Attention over base data-points for One Shot Learning},
-    author={Maniparambil, Mayug and McGuinness, Kevin and O'Connor, Noel},
-    journal={arXiv preprint arXiv:2210.02476},
-    year={2022}
+    @inproceedings{Maniparambil_2022_BMVC,
+    author    = {Mayug Maniparambil and Kevin McGuinness and Noel O Connor},
+    title     = {BaseTransformers: Attention over base data-points for One Shot Learning},
+    booktitle = {33rd British Machine Vision Conference 2022, {BMVC} 2022, London, UK, November 21-24, 2022},
+    publisher = {{BMVA} Press},
+    year      = {2022},
+    url       = {https://bmvc2022.mpi-inf.mpg.de/0482.pdf}
     }
 
 This repository has been adapted from the code repository of "Few-Shot Learning via Embedding Adaptation with Set-to-Set Functions" [[https://github.com/Sha-Lab/FEAT]](https://github.com/Sha-Lab/FEAT)
@@ -93,7 +95,7 @@ Base 2d features cache: Base features are pre-calculated.
 
 ConvNet
  - [mini-ImageNet](https://drive.google.com/file/d/1oBhGmOsA7V0xs01o7fh2jUcKR2zzisks/view?usp=sharing)
- - [CUB]()
+ - [CUB](https://drive.google.com/file/d/1miU6gSNElLZdzpHO84aNBd1z_jlTwS5O/view?usp=sharing)
 
   
 Resnet-12
@@ -104,7 +106,7 @@ Resnet-12
 Semantic querying cache: Closest base-instances are precalculated for faster training.
  - [mini-ImageNet](https://drive.google.com/file/d/1wy3f-nXbHQEZK4OsYCfQX5GxxZsUcQX-/view?usp=sharing)
  - [tiered-ImageNet](https://drive.google.com/file/d/1DSFcyu6Md6-u8Vsnun1mfCjGUWqV9pEe/view?usp=sharing)
- - [CUB]()
+ - [CUB](https://drive.google.com/file/d/1miU6gSNElLZdzpHO84aNBd1z_jlTwS5O/view?usp=sharing)
 
 
 Download both base 2d features cache and querying cache and place them in embeds_cache/
@@ -218,6 +220,12 @@ to train the 1-shot/5-shot 5-way BaseTransformer model with ResNet-12 backbone o
     $ python train_fsl.py  --max_epoch 100 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset TieredImageNet_og --way 5 --eval_way 5 --shot 5 --eval_shot 5 --query 15 --eval_query 15 --balance 0 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/tiered_r12_og_nosimclr_180842.pth --eval_interval 1 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --embed_pool post_loss_avg --orig_imsize -1 --dim_model 640 --fast_query ./embeds_cache/fastq_tiered_wordnetdef-hypernyms-bert-closest_classes_randomsample_eqlwts_classes-sampling.pt --embeds_cache_2d ./embeds_cache/ti_og_r12-default-180842_classwise_2d_new.pt --k 30 --mixed_precision O2 --wandb_mode disabled --exp_name tiered_5shot --z_norm before_tx
 
 
+to train the 1-shot/5-shot 5-way BaseTransformer model with ConvNet backbone on CUB dataset:
+    $ python train_fsl.py  --max_epoch 250 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class ConvNet --dataset CUB --way 5 --eval_way 5 --shot 1 --eval_shot 1 --query 15 --eval_query 15 --balance 0 --temperature 0.1 --temperature2 16 --lr 0.0001 --lr_mul 10 --lr_scheduler step --step_size 20 --gamma 0.5 --gpu 0 --init_weights ./saves/cub_bal0.01_jit0.1-0.1_rotate30_simclrfc1-noopt_201711.pt --eval_interval 1 --k 30 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --orig_imsize 128 --embed_pool post_loss_avg --mixed_precision O2 --fast_query /notebooks/fastq_cub_semantic_query_top5_random.pt --embeds_cache_2d embeds_cache/cub_bal0.01_jit0.1-0.1_rotate30_simclrfc1-noopt_201711_2d.pt --mixed_precision O2 --wandb_mode disabled
+
+    $ python train_fsl.py  --max_epoch 250 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class ConvNet --dataset CUB --way 5 --eval_way 5 --shot 5 --eval_shot 5 --query 15 --eval_query 15 --balance 0 --temperature 0.1 --temperature2 16 --lr 0.0001 --lr_mul 10 --lr_scheduler step --step_size 20 --gamma 0.5 --gpu 0 --init_weights ./saves/cub_bal0.01_jit0.1-0.1_rotate30_simclrfc1-noopt_201711.pt --eval_interval 1 --k 30 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --orig_imsize 128 --embed_pool post_loss_avg --mixed_precision O2 --fast_query /notebooks/fastq_cub_semantic_query_top5_random.pt --embeds_cache_2d embeds_cache/cub_bal0.01_jit0.1-0.1_rotate30_simclrfc1-noopt_201711_2d.pt --mixed_precision O2 --wandb_mode disabled
+
+
 
 
 ## Trained weights for BaseTransformers
@@ -246,5 +254,5 @@ We thank the following repos providing helpful components/functions in our work.
 
 
 ## Contact
-Feel free to raise and issue or contact me at mayugmaniparambil@gmail.com for queries and discussions.
+Feel free to raise an issue or contact me at mayugmaniparambil@gmail.com for queries and discussions.
 

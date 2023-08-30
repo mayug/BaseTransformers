@@ -101,7 +101,7 @@ ConvNet
 Resnet-12
  - [mini-ImageNet](https://drive.google.com/file/d/1f6wNjwA5KNuo2S41nQEpDdt1Ud8ktvze/view?usp=sharing)  
  - [tiered-ImageNet](https://drive.google.com/file/d/1cGk1Owv6x9mDYtXPin6KctwGWRXDTo04/view?usp=sharing)
- - [CUB]()
+ - [CUB](https://drive.google.com/file/d/1iOFshzemA-XdO4D8e9_Lo_t22dyuNxc-/view?usp=sharing)
 
 Semantic querying cache: Closest base-instances are precalculated for faster training.
  - [mini-ImageNet](https://drive.google.com/file/d/1wy3f-nXbHQEZK4OsYCfQX5GxxZsUcQX-/view?usp=sharing)
@@ -221,9 +221,18 @@ to train the 1-shot/5-shot 5-way BaseTransformer model with ResNet-12 backbone o
 
 
 to train the 1-shot/5-shot 5-way BaseTransformer model with ConvNet backbone on CUB dataset:
+
     $ python train_fsl.py  --max_epoch 250 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class ConvNet --dataset CUB --way 5 --eval_way 5 --shot 1 --eval_shot 1 --query 15 --eval_query 15 --balance 0 --temperature 0.1 --temperature2 16 --lr 0.0001 --lr_mul 10 --lr_scheduler step --step_size 20 --gamma 0.5 --gpu 0 --init_weights ./saves/cub_bal0.01_jit0.1-0.1_rotate30_simclrfc1-noopt_201711.pt --eval_interval 1 --k 30 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --orig_imsize 128 --embed_pool post_loss_avg --mixed_precision O2 --fast_query /notebooks/fastq_cub_semantic_query_top5_random.pt --embeds_cache_2d embeds_cache/cub_bal0.01_jit0.1-0.1_rotate30_simclrfc1-noopt_201711_2d.pt --mixed_precision O2 --wandb_mode disabled
 
     $ python train_fsl.py  --max_epoch 250 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class ConvNet --dataset CUB --way 5 --eval_way 5 --shot 5 --eval_shot 5 --query 15 --eval_query 15 --balance 0 --temperature 0.1 --temperature2 16 --lr 0.0001 --lr_mul 10 --lr_scheduler step --step_size 20 --gamma 0.5 --gpu 0 --init_weights ./saves/cub_bal0.01_jit0.1-0.1_rotate30_simclrfc1-noopt_201711.pt --eval_interval 1 --k 30 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --remove_instances 1 --orig_imsize 128 --embed_pool post_loss_avg --mixed_precision O2 --fast_query /notebooks/fastq_cub_semantic_query_top5_random.pt --embeds_cache_2d embeds_cache/cub_bal0.01_jit0.1-0.1_rotate30_simclrfc1-noopt_201711_2d.pt --mixed_precision O2 --wandb_mode disabled
+
+to train the 1-shot/5-shot 5-way BaseTransformer model with ResNet backbone on CUB dataset:
+
+    $ python train_fsl.py  --max_epoch 250 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset CUB --way 5 --eval_way 5 --shot 1 --eval_shot 1 --query 15 --eval_query 15 --balance 0.0 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/cub_r12_bal0.01_jit0.1-0.1_rotate30_simclrfc1-yesopt_144500.pt --eval_interval 1 --k 30 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --orig_imsize 128 --embed_pool post_loss_avg --dim_model 640 --remove_instances 1 --fast_query /notebooks/fastq_cub_semantic_query_top5_random.pt  --embeds_cache_2d ./embeds_cache/cub_r12_bal0.01_jit0.1-0.1_rotate30_simclrfc1-yesopt_144500_2d.pt --baseinstance_2d_norm True --return_simclr 2 --simclr_loss_type ver2.2 --wandb_mode disabled --exp_name mini_1shot --mixed_precision O2 --z_norm before_tx
+
+
+    $ python train_fsl.py  --max_epoch 250 --model_class FEATBaseTransformer3_2d --use_euclidean --backbone_class Res12 --dataset CUB --way 5 --eval_way 5 --shot 5 --eval_shot 5 --query 15 --eval_query 15 --balance 0.0 --temperature 0.1 --temperature2 0.1 --lr 0.0002 --lr_mul 10 --lr_scheduler step --step_size 40 --gamma 0.5 --gpu 0 --init_weights ./saves/cub_r12_bal0.01_jit0.1-0.1_rotate30_simclrfc1-yesopt_144500.pt --eval_interval 1 --k 30 --base_protos 0 --feat_attn 0 --pass_ids 1 --base_wt 0.1 --orig_imsize 128 --embed_pool post_loss_avg --dim_model 640 --remove_instances 1 --fast_query /notebooks/fastq_cub_semantic_query_top5_random.pt  --embeds_cache_2d ./embeds_cache/cub_r12_bal0.01_jit0.1-0.1_rotate30_simclrfc1-yesopt_144500_2d.pt --baseinstance_2d_norm True --return_simclr 2 --simclr_loss_type ver2.2 --wandb_mode disabled --exp_name mini_1shot --mixed_precision O2 --z_norm before_tx
+
 
 
 

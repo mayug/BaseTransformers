@@ -106,7 +106,7 @@ Resnet-12
 Semantic querying cache: Closest base-instances are precalculated for faster training.
  - [mini-ImageNet](https://drive.google.com/file/d/1wy3f-nXbHQEZK4OsYCfQX5GxxZsUcQX-/view?usp=sharing)
  - [tiered-ImageNet](https://drive.google.com/file/d/1DSFcyu6Md6-u8Vsnun1mfCjGUWqV9pEe/view?usp=sharing)
- - [CUB](https://drive.google.com/file/d/1miU6gSNElLZdzpHO84aNBd1z_jlTwS5O/view?usp=sharing)
+ - [CUB](https://drive.google.com/file/d/1omZq-03F67_Ue3_NlGQwIqPl9uGcZ4D8/view?usp=sharing)
 
 
 Download both base 2d features cache and querying cache and place them in embeds_cache/
